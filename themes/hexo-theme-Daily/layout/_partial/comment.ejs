@@ -1,7 +1,4 @@
-<% if(theme.comment.use === 'gitment') { %>
-<link rel="stylesheet" href="/css/gitment.css">
-<script src="/js/gitment.js"></script>
-<script src="/js/gitment-theme.js"></script>
+<% if(theme.comment.use == 'gitment') { %>
 <div id="container"></div>
 <script>
   var gitment = new Gitment({
@@ -15,5 +12,16 @@
     theme: myGitmentTheme,
   })
   gitment.render('container')
+</script>
+<% } else if ( theme.comment.use == 'valine') { %>
+<div id="vcomments"></div>
+<script>
+  new Valine({
+    el: '#vcomments',
+    appId: '<%= theme.comment.valine.appid %>',
+    appKey: '<%= theme.comment.valine.appkey %>',
+    path: '<%= page.date %>',
+    avatar: 'identicon'
+  })
 </script>
 <% } %>
